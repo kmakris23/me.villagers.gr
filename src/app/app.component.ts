@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, Router, RouterModule, RouterOutlet } from '@angular/router';
-import { environment } from '../environments/environment.development';
-import { filter, map } from 'rxjs';
+import { Component } from '@angular/core';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,25 +7,10 @@ import { filter, map } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'me.villagers.gr';
   expanded = true;
   theme: 'light' | 'dark' = 'dark'
-  activeRoute = '';
-
-  constructor(private router: Router) {
-   
-  }
-
-  ngOnInit(): void {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        console.log(event);
-        this.activeRoute = event.url;
-      }
-      
-    })
-  }
 
   toggleTheme() {
     document.body.classList.remove(this.theme);
